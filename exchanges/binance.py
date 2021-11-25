@@ -26,3 +26,17 @@ class Binance:
         req = json.loads(requests.get(url).text)
 
         return float(req["price"])
+
+    @staticmethod
+    def get_percent_of_klines(symbol, interval):
+        """
+        :param symbol: a Trading Pair like: BTCUSDT or ETHBTC
+        :param interval: type of candlestick pattern: 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h,
+                                                      12h, 1d, 1w
+        :return: the percentage of how much the Trading Pair raised in a specific time
+        """
+        url = f"https://api.binance.com/api/v3/klines?symbol={symbol}&interval={interval}"
+        req = json.loads(requests.get(url).text)
+
+        data = req[-1]
+        return round(float(data[4]) / float(data[1]) - 1, 4)
