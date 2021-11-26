@@ -14,7 +14,7 @@ class Coinbase:
         return sorted(symbols)
 
     @staticmethod
-    def get_price(symbol) -> float:
+    def get_price(symbol: str) -> float:
         """
         :param symbol: a Trading Pair like: BTC-USDT or ETH-BTC
         :return: the current price of the given Trading Pair
@@ -23,7 +23,7 @@ class Coinbase:
         return float(client.get_product_ticker(symbol)["price"])
 
     @staticmethod
-    def get_percent_of_klines(symbol, interval):
+    def get_percent_of_klines(symbol: str, interval: str) -> float:
         """
         :param symbol: a Trading Pair like: BTC-USDT or ETH-BTC
         :param interval: type of candlestick pattern: 1m, 5m, 15m, 1h, 6h, 8h, 1d

@@ -17,7 +17,7 @@ class KuCoin:
         return symbols
 
     @staticmethod
-    def get_price(symbol) -> float:
+    def get_price(symbol: str) -> float:
         """
         :param symbol: a Trading Pair like: BTC-USDT or ETH-BTC
         :return: the current price of the given Trading Pair
@@ -28,7 +28,7 @@ class KuCoin:
         return float(req["data"]["price"])
 
     @staticmethod
-    def get_percent_of_klines(symbol, interval):
+    def get_percent_of_klines(symbol: str, interval: str) -> float:
         """
         :param symbol: a Trading Pair like: BTC-USDT or ETH-BTC
         :param interval: type of candlestick pattern: 1min, 3min, 5min, 15min, 30min, 1hour, 2hour, 4hour, 6hour, 8hour,

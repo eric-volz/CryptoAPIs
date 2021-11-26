@@ -17,7 +17,7 @@ class Binance:
         return symbols
 
     @staticmethod
-    def get_price(symbol) -> float:
+    def get_price(symbol: str) -> float:
         """
         :param symbol: a Trading Pair like: BTCUSDT or ETHBTC
         :return: the current price of the given Trading Pair
@@ -28,7 +28,7 @@ class Binance:
         return float(req["price"])
 
     @staticmethod
-    def get_percent_of_klines(symbol, interval):
+    def get_percent_of_klines(symbol: str, interval: str) -> float:
         """
         :param symbol: a Trading Pair like: BTCUSDT or ETHBTC
         :param interval: type of candlestick pattern: 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 12h, 1d, 1w
