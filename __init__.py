@@ -1,1 +1,1 @@
-from exchanges import *
+from .exchanges import *
