@@ -3,27 +3,27 @@ import cbpro
 
 class Coinbase:
     @staticmethod
-    def get_all_symbols() -> [str]:
+    def get_all_pairs() -> [str]:
         """
         :return: all Trading Pairs which are traded on the exchange
         """
-        symbols = []
+        pairs = []
         client = cbpro.PublicClient()
-        for symbol in client.get_products():
-            symbols.append(symbol["id"])
-        return sorted(symbols)
+        for pair in client.get_products():
+            pairs.append(pair["id"])
+        return sorted(pairs)
 
     @staticmethod
-    def get_price(symbol: str) -> float:
+    def get_price(pair: str) -> float:
         """
         :param symbol: a Trading Pair like: BTC-USDT or ETH-BTC
         :return: the current price of the given Trading Pair
         """
         client = cbpro.PublicClient()
-        return float(client.get_product_ticker(symbol)["price"])
+        return float(client.get_product_ticker(pair)["price"])
 
     @staticmethod
-    def get_percent_of_klines(symbol: str, interval: str) -> float:
+    def get_percent_of_klines(pair: str, interval: str) -> float:
         """
         :param symbol: a Trading Pair like: BTC-USDT or ETH-BTC
         :param interval: type of candlestick pattern: 1m, 5m, 15m, 1h, 6h, 8h, 1d
@@ -42,7 +42,7 @@ class Coinbase:
             interval = 21600
         elif interval == "1d":
             interval = 86400
-        req = client.get_product_historic_rates(symbol, granularity=interval)
+        req = client.get_product_historic_rates(pair, granularity=interval)
         data = req[0]
 
-        return round(Coinbase.get_price(symbol) / data[3] - 1, 4)
+        return round(Coinbase.get_price(pair) / data[3] - 1, 4)
