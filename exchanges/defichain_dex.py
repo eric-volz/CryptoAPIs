@@ -29,7 +29,6 @@ class DefiChain_DEX:
 
         split = pair.split("-")
         pair = split[0] + "_" + split[1]
-        print(pair)
 
         price = float(req[pair]['last_price'])
         return round(price, 3)

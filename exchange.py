@@ -1,4 +1,4 @@
-from .exchanges import Binance, Coinbase, KuCoin
+from .exchanges import Binance, Coinbase, KuCoin, DefiChain_DEX
 
 
 def get_exchange(exchange: str):
@@ -8,6 +8,10 @@ def get_exchange(exchange: str):
         return Coinbase
     elif exchange == 'kucoin':
         return KuCoin
+    elif exchange == 'defichain_dex':
+        return DefiChain_DEX
+    else:
+        raise Exception(f"The exchange {exchange} existiert nicht!")
 
 
 def get_day_percent_of_kline(exchange, pair):
@@ -16,4 +20,6 @@ def get_day_percent_of_kline(exchange, pair):
         return obj_exchange.get_percent_of_klines(pair, '1d')
     elif exchange == 'kucoin':
         return obj_exchange.get_percent_of_klines(pair, '1day')
+    elif exchange == 'defichain_dex':
+        raise Exception("Not Supported")
 
