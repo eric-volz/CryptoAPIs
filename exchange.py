@@ -23,3 +23,11 @@ def get_day_percent_of_kline(exchange, pair):
     elif exchange == 'defichain_dex':
         raise Exception("Not Supported")
 
+
+def get_list_of_exchanges_for_chart():
+    return ["binance", "coinbase", "kucoin"]
+
+
+def get_list_of_exchanges():
+    return ["binance", "coinbase", "kucoin", "defichain_dex"]
+
